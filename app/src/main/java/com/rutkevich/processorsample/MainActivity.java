@@ -10,6 +10,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        HelloProcessor.main(new String[]{});
+        GeneratedByProcessorInJava.main(new String[]{});
+        GeneratedByProcessorInKotlin.main(new String[]{});
     }
 }

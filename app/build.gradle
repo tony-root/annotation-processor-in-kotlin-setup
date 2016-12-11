@@ -20,5 +20,12 @@ android {
 
 dependencies {
     compile project(":processor-runtime")
-    annotationProcessor project(":processor-compiler")
+
+    annotationProcessor project(':processor-compiler-kotlin')
+//    Or use kapt if the project is in Kotlin
+//    kapt project(":processor-compiler-kotlin")
+
+    annotationProcessor project(':processor-compiler-java')
+//    Or use kapt if the project is in Kotlin
+//    kapt project(":processor-compiler-java")
 }

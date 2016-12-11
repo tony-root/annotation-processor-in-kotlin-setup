@@ -1,0 +1,10 @@
+apply plugin: 'kotlin'
+
+dependencies {
+    compile project(":processor-runtime")
+    compile 'com.squareup:javapoet:1.8.0'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:1.0.5-2"
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"

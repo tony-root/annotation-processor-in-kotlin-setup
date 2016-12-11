@@ -1,1 +1,1 @@
-include ':app', ':processor-compiler', ':processor-runtime'
+include ':app', ':processor-compiler-kotlin', ':processor-compiler-java', ':processor-runtime'

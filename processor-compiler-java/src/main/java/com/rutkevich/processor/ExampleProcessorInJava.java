@@ -1,7 +1,7 @@
 package com.rutkevich.processor;
 
 import com.google.auto.service.AutoService;
-import com.rutkevich.processorruntime.ExampleAnnotation;
+import com.rutkevich.processorruntime.AnotherAnnotation;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
@@ -25,7 +25,7 @@ import javax.tools.Diagnostic;
 
 
 @AutoService(Processor.class)
-public class ExampleProcessor extends AbstractProcessor {
+public class ExampleProcessorInJava extends AbstractProcessor {
 
     private Types typeUtils;
     private Elements elementUtils;
@@ -41,12 +41,12 @@ public class ExampleProcessor extends AbstractProcessor {
         filer = env.getFiler();
         messager = env.getMessager();
 
-        messager.printMessage(Diagnostic.Kind.NOTE, "Initialized");
+        messager.printMessage(Diagnostic.Kind.NOTE, "Initialized in Java");
     }
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment env) {
-        messager.printMessage(Diagnostic.Kind.NOTE, "Processing...");
+        messager.printMessage(Diagnostic.Kind.NOTE, "Processing in Java...");
 
         if (!created) {
             writeFile();
@@ -64,7 +64,7 @@ public class ExampleProcessor extends AbstractProcessor {
                 .addStatement("$T.out.println($S)", System.class, "Hello, JavaPoet on Android!")
                 .build();
 
-        TypeSpec helloWorld = TypeSpec.classBuilder("HelloProcessor")
+        TypeSpec helloWorld = TypeSpec.classBuilder("GeneratedByProcessorInJava")
                 .addModifiers(Modifier.PUBLIC, Modifier.FINAL)
                 .addMethod(main)
                 .build();
@@ -82,7 +82,7 @@ public class ExampleProcessor extends AbstractProcessor {
     @Override
     public Set<String> getSupportedAnnotationTypes() {
         Set<String> annotations = new LinkedHashSet<>();
-        annotations.add(ExampleAnnotation.class.getCanonicalName());
+        annotations.add(AnotherAnnotation.class.getCanonicalName());
         return annotations;
     }
 
